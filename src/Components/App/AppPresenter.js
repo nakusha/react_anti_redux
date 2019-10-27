@@ -5,6 +5,7 @@ import Notification from "../Notification";
 
 import reset from "styled-reset";
 import { createGlobalStyle } from "styled-components";
+import Store from "../../store";
 
 const GlobalStyle = createGlobalStyle`
     ${reset};
@@ -17,7 +18,17 @@ const AppPresenter = () => (
         <GlobalStyle/>
         <Header/>
         <Flex alignCenter full column>
-            <Notification text={"Hello"} seen={false}/>
+            <Store.Consumer>
+                {store => {
+                    return Object.keys(store.notifications).map(key => (
+                        <Notification 
+                            key={store.notifications[key].id} 
+                            id={store.notifications[key].id} 
+                            text={store.notifications[key].text} 
+                            seen={store.notifications[key].seen} />
+                    ));
+                }}
+            </Store.Consumer>
         </Flex>
     </Fragment>
 );
