@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Flex, { FlexItem } from "styled-flex-component";
 import FontAwesome from "react-fontawesome";
-import Stroe from "../../store";
 import Store from "../../store";
 
 const Header = styled.header`
